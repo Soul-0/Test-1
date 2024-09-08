@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Added font for better appearance */
+        }
+        h1 {
+            text-align: center;
+        }
+        #popup {
+            background: rgb(151, 213, 238);
+            border-radius: 10px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.205);
+            width: 30%;
+            color: black;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            position: fixed; /* Fixed position for overlay effect */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%) scale(0.1); /* Center and scale */
+            visibility: hidden; /* Initially hidden */
+            transition: all 0.5s; /* Smooth transition */
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+        .openPopUp {
+            visibility: visible; /* Show the popup */
+            transform: translate(-50%, -50%) scale(1); /* Scale to full size */
+        }
+        
+        #btn {
+            width: 80%;
+            border: none;
+            margin: 20px;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #popImg {
+            width: 15%;
+            margin-top: -30px;
+        }
+        
+        /* Overlay background */
+        #overlay {
+            position: fixed; /* Fixed position for overlay */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            visibility: hidden; /* Initially hidden */
+            z-index: 999; /* Below the popup */
+            transition: visibility 0.5s; /* Smooth transition for visibility */
+        }
+        .showOverlay {
+            visibility: visible; /* Show the overlay */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>This is a pop up tutorial</h1>
+        <button onclick="openPopUp()">Come</button>
+        <div id="overlay"></div> <!-- Overlay div -->
+        <div id="popup">
+            <img src="check.png" alt="" id="popImg">
+            <h1>Thank you</h1>
+            <p>Your information is hacked</p>
+            <button type="submit" id="btn" onclick="ClosePopUp()">Submit</button>
+        </div>
+        <button onclick="openPopUp()">Summon popup</button>
+    </div>
+
+    <script>
+        let popup = document.getElementById("popup");
+        let overlay = document.getElementById("overlay");
+
+        function openPopUp() {
+            popup.classList.add("openPopUp");
+            overlay.classList.add("showOverlay"); // Show overlay
+        }
+
+        function ClosePopUp() {
+            popup.classList.remove("openPopUp");
+            overlay.classList.remove("showOverlay"); // Hide overlay
+        }
+    </script>
+</body>
+</html>
